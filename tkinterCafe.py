@@ -23,7 +23,38 @@ def choisir():
         prix = 0.00
     
     #messagebox.showinfo("Commande", f"Merci ! Vous avez choisi {choix} Payer svp: {prix} €")
-    messagebox.showwarning("Commande", f"Merci ! Vous avez choisi {choix} Payer svp: {prix} €")
+    #messagebox.showwarning("Commande", f"Merci ! Vous avez choisi {choix} Payer svp: {prix} €")
+    if messagebox.showinfo("Commande", f"Vous avez choisi {choix}. Prix: {prix} €"):
+        # démarrer l'animation si ok
+        lancer_animation()
+
+# Fonction pour lancer une animation de "chargement"
+def lancer_animation():
+    # Créer une nouvelle fenêtre de type "sablier"
+    sablier = tk.Toplevel(fenetre)
+    sablier.title("Commande en cours")
+    sablier.geometry("200x100")
+    sablier_label = tk.Label(sablier, text="Préparation en cours...")
+    sablier_label.pack(pady=10)
+    
+    sablier_icon = tk.Label(sablier, text="⌛", font=("Arial", 40))
+    sablier_icon.pack()
+
+    # Fonction pour changer de couleur toutes les 100 ms
+    def alterner_couleur():
+        current_color = sablier_icon.cget("foreground")
+        new_color = "black" if current_color == "blue" else "blue"
+        sablier_icon.config(foreground=new_color)
+        # Replanifier cette fonction toutes les 100 ms
+        sablier.after(100, alterner_couleur)
+    
+    # Démarrer l'animation de changement de couleur
+    alterner_couleur()
+    
+    # Fermer la fenêtre après 3 secondes
+    fenetre.after(3000, sablier.destroy)
+
+
 # fenêtre principale
 fenetre = tk.Tk()
 fenetre.title(":: Coffee Distributor ::")
