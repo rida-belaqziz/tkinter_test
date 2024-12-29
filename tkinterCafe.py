@@ -62,10 +62,10 @@ fenetre.geometry("500x500")
 fenetre['bg'] = 'PeachPuff2'
 
 # Intégrer une image cafe
-photo = PhotoImage(file="/Users/ridabelaqziz/Desktop/Revision/projetCafe/cafe.png")
-canvas = Canvas(fenetre,width=450, height=200)
-canvas.create_image(0, 0, anchor="nw", image=photo)
-canvas.pack(pady=10)
+#photo = PhotoImage(file="/Users/ridabelaqziz/Desktop/Revision/projetCafe/cafe.png")
+#canvas = Canvas(fenetre,width=450, height=200)
+#canvas.create_image(0, 0, anchor="nw", image=photo)
+#canvas.pack(pady=10)
 
 
 # Label 
